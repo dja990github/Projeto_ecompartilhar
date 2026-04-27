@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Offline</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        #conteinerCell {
+            height: 485px;
+            width: 260px;
+            margin: 0 auto;
+            background-color: rgb(251, 234, 202);
+            border-radius: 15px;
+            border: 3px solid #000000;
+            position: relative;
+        }
+
+        .box {
+            margin-top: 50px;
+        }
+
+        img {
+            width: 120px;
+            animation: balanco 7s linear infinite;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #2E7D32;
+            color: white;
+            border-radius: 20px;
+        }
+
+        @keyframes balanco {
+            0% {
+                transform: rotate(3deg) translateX(-6px)
+            }
+
+            ;
+
+            50% {
+                transform: rotate(-5deg) translateX(10px)
+            }
+
+            ;
+
+            100% {
+                transform: rotate(3deg) translateX(-6px)
+            }
+
+            ;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="conteinerCell">
+
+        <div class="box">
+            <img src="./img/obg/planta.png">
+
+            <h2>🌿 Você está offline</h2>
+            <p>Tente reconectar e iniciar a sessão</p>
+
+            <button onclick="tentar()">Tentar novamente</button>
+        </div>
+
+        <script>
+            const btn = document.querySelector('button');
+
+            function tentar() {
+                if (navigator.onLine) {
+                    location.reload();
+                } else {
+                    alert('Ainda sem conexão 😢');
+                }
+            }
+
+            // quando voltar internet → recarrega automático
+            window.addEventListener('online', () => {
+                window.location.href = '/';
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>
