@@ -1,0 +1,38 @@
+CREATE DATABASE ecompartilhar;
+
+CREATE TABLE tbplantas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    nome VARCHAR(100),
+    descricao TEXT,
+    troca BOOLEAN DEFAULT FALSE,
+    doacao BOOLEAN DEFAULT FALSE,
+    especie VARCHAR(100),
+    tamanho VARCHAR(50),
+    estado VARCHAR(50),
+    imagem VARCHAR(255),
+    contato VARCHAR(100),
+    data_cad TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES tbusuarios(id)
+);
+
+CREATE TABLE tbusuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone varchar(250),
+    senha VARCHAR(255),
+
+    imagem VARCHAR(255),
+
+    data_cad TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tbdicas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo varchar(100),
+    dica varchar(255),
+    token_login VARCHAR(64) NULL
+);
+
+INSERT INTO tbusuarios (nome,email,telefone,senha) VALUES ('Armando Umgolpe','sim@não.com','(11)989296427','123');
